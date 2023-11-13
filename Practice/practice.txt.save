@@ -1,0 +1,786 @@
+-------------------786--------------
+
+cloud native computing 
+
+start basic cloud computing 
+
+then we move towards cloud native computing 
+
+cloud + Devops is cloud native computing 
+
+Devops=git,docker,kubernetes,microservices
+
+kubernetes is the most important tool of today
+
+it takes a time to learn it 
+
+The most important thing in this whole course is kubernetes 
+
+Then we will do Jenkins
+
+we will use AWS for the cloud 
+
+its free for 1-year
+
+What is cloud-computing?
+
+Define Cloud?
+
+What is cloud?
+
+On-Demand-Availability-Of-Computer-Services
+
+AWS free-tier account give 1-year 
+
+Structure of cloud 
+
+We just need internet for this
+
+We are using Public Cloud (AWS)
+
+Private cloud that we made ourself 
+
+Multicloud=Using two cloud services from two different vendors
+
+IAAS=Infrastrue as a service=Using EC2
+
+PAAS=Platform as a service=Using Linux Apache 
+
+SAAS(Software as a service)=GoogleDrive,Dropbox
+
+Week-1-Cloud Native Computing,
+
+Its a modern way of developing an application
+
+What this modern means?
+
+Means we will use modern tools and techniques 
+
+It also has agile development 
+
+Cloud Native Computing Has:
+
+1- Agile Development 
+
+2- Microservices (Docker)
+
+	Deployment-issues=?
+	
+Docker reslove the dependencies issue
+
+Make a container and put all the dependencies required in that container 
+
+By this the Conflict of dependency is resolved 
+
+What is Kubernetes?
+
+Its an orchestration tool
+
+container orchestration
+
+it helPS TO  develop apps with large users 
+
+How kubernetes helps in this case,
+
+Container-1 And Container-2 
+
+Microservices   Microservices
+
+Container-1 has 1 million user capacity 
+
+Container-2 has 2 million user capacity
+
+When the users exceed from 1 million kubernetes shit the audience to container-2
+
+kubernetse is used for containers orchestration
+
+Jenkins
+
+Automate Code 
+
+And to create pipeline, jenkins is used
+
+Week-1b------------------------------------------------------------------
+
+
+Content
+
+1-AWS Account Creation
+
+2-EC2 Instance (Virtual Machine)
+
+3-Connect with the system
+
+Signup For free tier 
+
+Amazon s3 buckets 	
+
+SageMaker for machine learning 
+
+Login using root user
+
+Regions----Then regions have zones
+
+Select region which is close to Pakistan
+
+AWS Services
+
+Virtual Machine---Or----Virtualization 
+
+VmWare or Virtual Box e.t.c 
+
+Same virtual machines are building in Cloud Computing 
+
+The next lvl thing to virtual machines is containerization
+
+Various Steps of Launching INstance 
+
+1-Choose AMI image(Amazon Machine Image)
+
+2-choose Instance Type
+
+3-Configure Instance 
+
+4-Add Storage 
+
+5-Add Tags (tell us information about billing and cost e.t.c)
+
+6-Configure Security Group (Setting Private and Public Key)
+
+AKA making way for SSH (secure shell)
+
+SSH------Public Key
+SSH------Private Key
+
+we use Public key to connect to a machine
+
+We are going to create an EC2 instance now 
+
+EC2=Elastic Compute Cloud
+
+Lauch instance to create a instance 
+
+kFirst give name and tag
+
+Then select Operating Systems
+
+Instance type =Free tier 
+
+Then create a new key-pair
+
+A key is downloaded to your PC
+
+Donot change network settings
+
+Select Create Security Group
+
+Then simply select free tier from the storage section
+
+We cannot directly access
+
+we have to give the key when accessing the ec2 instance 
+
+ssh -u cloud.pem ubuntu@ips
+
+it will give error, u have to lock the private key to read only 
+
+so change its permission to chmod  0400
+
+4=read
+
+6=read write
+
+7=read,write,execute
+
+u are finally connected to the cloud machine
+
+Week-2a--------------------------------------------------------------------
+
+Storage Service = s3 bucket
+
+we will deploy a static website (html/css) on it 
+
+Then we will go towards dynamic website (PHP), we will host it on ec2 instance
+
+Then we will look into another service of RDS, Relational Database Service and install MYSQL on it
+
+In the next class we will deploy a complete web application
+
+We cannot access RDS instance, we will access it from the EC2 instance 
+
+Select s3 bucket in AWS
+
+Give bucket name, it must be unique
+
+don't change region
+
+Uncheck block all public access
+
+Bucket Version will upload the latest bucket 
+
+Read before using any service in AWS account
+
+select Create a bucket 
+
+create some files html and css on your pc 
+
+with some basic code 
+
+Write some basic code in html file
+
+Then create a css file and write some basic code in it 
+
+Upload these files to s3 bucket 
+
+After uploading have a look on the settings of s3 bucket
+
+Then upload the files
+
+Then go to properties 
+
+and go to static website hosting option and enable it
+
+write index.html name in the specify the home option
+
+This ec2 creation s3 bucket uploading can be done automatically by Terraform by the use of code. 
+
+(IAC)(Infrastructure as a code)
+
+If we do it using terraform then we add bucket policy 
+
+But now we are doing it manually so we will have to do it using AWS policy generator 
+
+Principal
+
+COPY ARN and paste it there and generate a json policy 
+
+Copy that policy and paste in the box where it was required 
+
+Now we want to see its end point so that we can access it from the browser
+
+So now static site hosting is completed 
+
+Now for dynamic site hosting------------------
+
+go to the ec2 instance,start it and copy its public ip address for the ssh
+
+ssh -i cloud.pem ubuntu@ip
+
+now we are connected to cloud machine 
+
+First we have to install apache in the cloud machine 
+
+do sudo apt update first 
+
+sudo apt install apache2 
+
+this will install apache on the machine
+
+now we will see www folder in /var folder
+
+in it there will an html folder 
+
+and in it there will be a file as index.html
+
+Copy the id of the instance and paste it in the browser 
+
+Nothing is displayed because in security group we only give the permission of ssh to the instance
+
+Go and edit it
+
+edit inbound rule
+
+add rule as HTTP and select ip 0.0.0.0/0 so that anyone can access it and save rule 
+
+Now copy ip of ec2 again and paste in browser and u can see the Apache page
+
+now remove the index.html file from /html
+
+now we have to install php 
+
+sudo apt install php7.4
+
+after php installation we will add some php code 
+
+cd var/www/html
+
+ls
+
+now create a index.php file
+
+and write some php code in it 
+
+<?
+
+?>
+
+Copy the php code and paste it in the index.php file
+
+write simple printing code of php 
+
+Now simply access it from the ip and u have to website deployed on the ec2 instance
+
+Week-2b---------------------------------------------------------------
+
+PHP + MYSQL based application deployment on the cloud
+
+We will separate front end and backend
+
+EC2 INstance will have front end (php)
+
+RDS will have backend (Database)
+
+EC2 will be public and can be acessible 
+
+RDS will be private 
+
+we will connect ec2 and RDS instancees
+
+STEPS for doing this:
+
+1) RDS creation
+
+2) EC2 Creation
+
+3) Create security group to join both of these. Security group have inbound rules and outbound rules
+
+We will create 2 security groups
+
+4) Apache Installation
+
+5) PHP installation
+
+6) MYSQL installation to create tables from EC2 to RDS
+
+RDS instance creation
+
+VPC means virtual private cloud 
+
+we are using default vpc and subnets provided by the AWS
+
+Select create Database in RDS 
+
+select mysql
+
+select free tier 
+
+name=database-2
+
+username=admin 
+
+password= 
+
+uncheck enable storage autoscaling
+
+Leave the remaing everything as default 
+
+VPC's has all the virtual private clouds
+
+select create new vpc security group
+
+name it as cc-db
+
+selet availability zone 
+
+uncheck automated backup
+
+and then simply create instance 
+
+Go to AWS and create a EC2 instance now
+
+Launch instance 
+
+select ubuntu
+
+use existing key pair 
+
+go to network settings, use default vpc 
+
+enable auto assign public ip 
+
+create security group
+
+cc-web
+
+desciription Allow SSH & HTTP
+
+instance of EC2 created 
+
+Now go to the security groups 
+
+cc-web and cc-db we will use these two
+
+go to the cc-web 
+
+add ssh rule 
+
+add http rule 
+
+save it 
+
+now go to cc-db security group and edit its inbound rule
+
+and add rule for ec2 instance so that it can access it 
+
+select MYSQL/Aurora and cc-web in the ip and save it
+
+ssh to the cloud machine 
+
+sudo apt update it 
+
+then install apache and check it in the var folder 
+
+now install sudo apt install php
+
+sudo apt install mysql 
+
+sudo apt install mysql-client 
+
+now for connect to RDS database do this,
+
+ENDPOINT is the host address. copy it
+
+mysql -h (host address) -u admin -P 3306 -p 
+
+Enter Password: 
+
+mysql> 
+
+connect to RDS instance
+
+execute mysql queries 
+
+show databases;
+
+create database faculty;
+
+show databases;
+
+use faculty;
+
+create Table Persons()
+
+and do some insertion in this table using sql query
+
+now exit from this sql prompt using "exit"
+
+now go cd var/www/html
+
+rm index.html
+
+nano index.php
+
+we will write php code to establish connection to RDS Database instance and fetch the data from that data base and will print it 
+
+After doing this, go to the ip of EC2 instance. You will get the Text welcome but u are not getting the data from the RDS database. There is a very little issue here in the connection. We should check whether mysqli is working or not 
+
+simply write the phpinfo() in the start of php code
+
+This will display all the php information in the IP address of the EC2 instance 
+
+If u see at this information, u will come to know that there is no mysqli portion in this information, this means there is a some issue in the mysqli connection
+
+write another line of var_dump(function_exits('mysqli_connect')) 
+
+it will check whether the msqli_connect exits in the information or not. This is another way of assuring whether the mysqli is established or not 
+
+It will return true if connection exists and false if it doesnot exits 
+
+now do sudo apt install php-mysql to remove this mysqli error
+
+and now restart apache2 service
+
+sudo service apache2 restart 
+
+now restart the page and u will see true result for successful connection and we are also getting the information from the RDS database 
+
+We connected the EC2 and RDS instances using the security groups 
+
+Next lecture is on VPC 
+
+Virtual Private Cloud 
+
+and we will deploy our application on our Virtual Private Cloud
+
+Week-5-----------------------------------------------Cloud9-Service 
+
+IAM User-Users 
+
+1- we will create user and give some permissions to that user
+
+2- Cloud9 serice->It will provide u the complete environment of Linux. U can also called as IDE 
+ 	
+it has all the services of PHP,MYSQL and docker
+
+3-We have another service of Cloud Watch, it is used for monitoring of the resources. 
+
+First of all go to Aws and search IAM in the search bar
+
+We will create a user and we will allow some permissions to the user
+
+go to user groups 
+
+create user group and name it 
+
+Attach some policies to the group (add ec2 full access permission to the group)
+
+all the member of this group will be able to use these services
+
+Now go to the users and create a user 
+
+give a username (AllRakha)
+
+check accesskey and password box 
+
+set a password for the user 
+
+Go to next 
+
+add user to mygroup that we've created few seconds back
+
+simply do next 
+
+and click create user
+
+Now u will have a acess link
+
+open that link and enter the new user name and password and login 
+
+u are now in as Allah Rakha
+
+U can check EC2 service is runnning 
+
+no go to the RDS service, u can see the message that u are not authorized to use RDS service. We can only use the EC2 services because we've defined it in the security group
+
+2)Cloud9 Service---------------------------------------------------
+
+Now again sign-in as root user 
+
+and go to search bar 
+
+and search the Cloud9 service
+
+This service is for users who have windows and don't have linux and they want to use linu will all the services preinstalled. They can use the cloud9 service
+
+Click create environment 
+
+Then click next 
+
+click create new EC2 instance for environment (direct access)
+
+Click ubuntu server 
+
+Click next and click create environment 
+
+then click open IDE and u now have a complete linux environment infront of you
+
+click on new terminal 
+
+write pwd and u can see your path
+
+We've uploaded the local key of the ec2 instance to this IDE 
+
+check docker --version 
+
+check mysql --version
+
+check php --version
+
+now our private key is uploaded and now we can even connect to the ec2 instance from this IDE 
+
+cd home/ubuntu/environment
+
+ls
+
+cd home
+
+ls 
+
+cd ubuntu
+
+ls
+
+cd environment
+
+now do ssh to our ec2 instance using public ip of ec2 instance 
+
+now we are using the ec2 instance on our terminal
+
+Week-3----------------------------------------Virtual Private Cloud
+
+Theory Portion we will cover today
+
+1-IP's
+
+2-VPN
+
+3-Subnetting
+
+And then we will move towards the virtual private cloud
+
+Virtual Private Network....What is this?
+
+Why we use virtual?
+
+Because we will use the public network and apply some restrictions on it and make it virtually private
+
+We use public network and we are making it secure and logically we are making Private Network from it
+
+virtual Private Cloud 
+
+Public Cloud-Private Cloud 
+
+AWS,azure,google cloud all are public clouds 
+
+Creating a self private cloud is very expensive 
+
+We can use Public Cloud Services and by using the VPC service of their, we can make a virtual private cloud from that 
+
+Department 1(Network1)			Department 2(Network2)
+
+We are going to create our VPC 
+
+before it we were using default vpc provided by the aws cloud 
+
+Virtual means we are using Public Network and making it Private Network logically
+
+Addressing-----------------------TWO------1)Logical(IP-ADDRESS) 2) Physical(MAC)
+
+Why we need these two addresses?
+
+Source------------------------------------------------------------------------Destination location is told by IP's
+
+Ip have different classes 
+
+Class A 1-126
+
+Class B 128-191
+
+Class C 192-223
+
+Class D
+
+IP addresses have 4 octets 
+
+4 boxes 
+
+1 2 3 4
+[][][][]
+N H H H
+
+Some told network 
+
+some octets told about host
+
+1st octed is representing Network 
+
+Other 3 octets are representing Host
+
+
+For Class B:
+1 2 3 4 
+[][][][]
+N N H H
+
+
+For Class C:
+1 2 3 4 
+[][][][]
+N N N H
+
+Why we do subnetting?
+
+To save IPs, we do subnetting 
+
+ 20PCs ------------[Router]---------------------[Router]--------------5 PCS
+ 		  	40Pcs Capacity		   30Pcs Capacity 
+ 		  	
+ Swtich is used to connect devices on the same network
+ 
+ Router is used to connect networks(To connect devices from different networks)
+ 
+ To save the extra router installements and to save extra ips we do subnets
+
+Example we have 4 Subnets
+
+Two subnets are public(s1 and s2) and are used to deploy the front end application
+
+ S1  Public	S2
+ []		[]
+ 
+ The remaining two subnets(s3 and s4) are private and are used for the databases
+ 
+ S3  Private	S4
+ []		[]
+ 
+ AWS-----------VPC 
+ 
+ Region---------------Zones
+ 
+ 1 Region, we can create 5 VPC
+ 
+ 1 Region------------------5 VPC (virtual private cloud)
+ 
+ 1 VPC--------------------200 subnets
+ 
+ VPC---------is created in-------------Region
+ 
+ Subnet------is created in-------------Zones
+ 
+ public subnets and private subnets
+ 
+ on private subnets we will deploy databases so that no one can directly access them
+ 
+ on public subnets we will deploy frontends of the application
+ 
+ routing table
+ 
+ private route table and public route table
+ 
+ We will create gateway and we will access public ip using the gateway in the public Subnets
+ 
+ There will be no gateway for the Private route table
+ 
+ CUSTOM VPC STEP BY STEP------------------------------------------------
+ 
+ 1- create custom vpc 
+ 
+ 2- create public subnets
+ 
+ 3- create internet gateway and attach to VPC public part to allow the outside traffic
+ 
+ 4- Create and Configure routing table
+ 
+ 5- create security group
+ 
+ 6- ec2 instance creation
+ 
+ 7- database instance creation 
+ 
+ 8- SSH
+ 
+WEEK-4------------------------------------------VPC PRACTICAL
+
+virtual private cloud 
+
+what is it??
+
+public--------------->Private Network
+
+Subnets-------------->Subnetworks
+
+Smaller networks are called as Subnets and they all are connected
+
+[s0]-----------------------------------[s1]
+
+4 subnets---2 public and 2 private
+
+internet gateway
+
+connect it to public subnets to allow outside traffic 
+
+deploy frontend on public subnets
+
+deploy backend on private subnets
+
+
