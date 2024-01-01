@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      volumes:
+      - name: pvol
+        persistentVolumeClaim:
+          claimName: pvc
+      containers:
+      - name: frontend
+        image: sandsoftimes/second-app
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: pvol
+          mountPath: /tmp/demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: NodePort
+

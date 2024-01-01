@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: liveprob2
+spec:
+  containers:
+  - name: container-2
+    image: usama9876/firstdocker-app
+    ports:
+    - containerPort: 80
+    livenessProbe:
+      exec:
+        command: 
+        - cat
+        - abc.txt

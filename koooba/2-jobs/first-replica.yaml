@@ -1,0 +1,21 @@
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: myrs
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: rs-container
+        image: usama9876/firstdocker-app
+        ports:
+        - containerPort: 80 
+        
+    

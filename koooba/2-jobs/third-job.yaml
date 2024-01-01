@@ -1,0 +1,19 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: thirdjob
+spec:
+  completions: 5
+  parallelism: 2
+  template:
+    spec:
+      containers:
+      - name: tjob-container
+        image: usama9876/firstdocker-app
+        command:
+        - "bin/bash"
+        - "-c"
+        - "echo hello world"
+      restartPolicy: Never
+  backoffLimit: 4
+  activeDeadlineSeconds: 30

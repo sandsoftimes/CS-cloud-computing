@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: podwithlabels
+  labels:
+    type: frontend
+    env: tier1
+spec:
+  containers:
+  - name: container-1
+    image: usama9876/firstdocker-app
+    ports:
+    -  containerPort: 80
+  
+  

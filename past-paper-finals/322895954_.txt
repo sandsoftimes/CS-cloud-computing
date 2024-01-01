@@ -1,0 +1,44 @@
+﻿
+
+FZIST
+Student Name:
+Program: BS(CS/SE)-7 Semester: Fall-2022
+National University
+of Computer & Emerging Sciences Peshawar Campus
+Roll No:
+Time Allowed: 3 hours
+Course: Cloud Computing (CS4075)__
+NOTE: Attempt all questions.
+NATIONAL
+URGING SCIENCES
+UNIVERSAL COMPUTER
+Examination: Final
+Total Marks: 100 Weightage: 50% Date: 24 Dec 2022
+Instructor Name: Usama Musharaf
+Question # 1: CLO-2
+Marks: [10] Time: [20 mins]
+Discuss the importance of a virtual private cloud (VPC). Also, discuss the features that help you to configure a VPC.
+Differentiate between internet gateway and NAT gateway.
+Question #2: CLO-2
+Marks: [10] Time: [20 mins]
+Suppose you have implemented a dynamic (target tracking scaling) policy and the metric value (CPU utilization) is set to 70% with 4 instances as shown below:
+EC2-1 CPU Usage = 60%
+EC2-2 CPU Usage = 60%
+EC2-3 CPU Usage = 60%
+EC2-4 CPU Usage = 60%
+
+a. As per the given CPU utilization what action the autoscaler group would initiate? 
+b. How can we identify faulty EC2 instances in autoscaling?
+e. What problem you can think of if we set the warm-up time to 0 or 1 sec?
+Question # 3: CLO-3
+Marks: [30] Time: [40 mins]
+a Discuss the significance of path-based routing. Also, comment on the use of path-based routing in a network load balancer.
+b. Can we host multiple microservices behind a single application load balancer using listener rules and target groups with path-based routing? Give a solid reason.
+c. Differentiate between round robin, server load, and server connections load balancing strategy. 
+d. Discuss the role of Kubernetes in developing large-scale applications.
+Le. Comment on the creation of pods using the replica set in achieving reliability.
+Question #4: CLO-4
+Marks: [10] Time: [30 mins]
+a. Write down the steps for containerizing an application using docker. Also, discuss the purpose of docker-compose.
+b. Write a docker-compose.yaml file to containerize a microservices-based application developed with PHP and MySQL.
+loud Computing (CS4075)

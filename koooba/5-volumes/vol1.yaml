@@ -1,0 +1,25 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod-with-vol
+spec:
+  volumes:
+  - name: sharedfolder
+    emptyDir: {}
+  containers:
+  - name: container-one
+    image: usama9876/firstdocker-app
+    imagePullPolicy: IfNotPresent
+    ports:
+    - containerPort: 8080
+    volumeMounts:
+    - name: sharedfolder
+      mountPath: /alpha
+  - name: container-two
+    image: usama9876/second-application
+    imagePullPolicy: IfNotPresent
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: sharedfolder
+      mountPath: /beta 

@@ -1,0 +1,12 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: first-pod
+spec:
+  containers:
+  - name: container-1
+    image: usama9876/firstdocker-app
+    imagePullPolicy: IfNotPresent
+    ports:
+    -  containerPort: 80 
+    

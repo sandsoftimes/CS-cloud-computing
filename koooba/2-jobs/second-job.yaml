@@ -1,0 +1,17 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: secondjob
+spec:
+  template:
+    spec:
+      containers:
+      - name: sj-container
+        image: usama9876/firstdocker-app
+        command:
+        - "bin/bash"
+        - "-c"
+        - "echo hello world"
+      restartPolicy: Never
+  backoffLimit: 4
+  activeDeadlineSeconds: 60

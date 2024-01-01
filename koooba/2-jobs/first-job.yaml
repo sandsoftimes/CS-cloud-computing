@@ -1,0 +1,13 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: firstjob
+spec:
+  template:
+    spec:
+      containers:
+      - name: fj-container
+        image: usama9876/firstdocker-app
+      restartPolicy: Never
+  backoffLimit: 4
+  activeDeadlineSeconds: 30
